@@ -1,7 +1,7 @@
-﻿using CleanArch.Domain.Abstractions;
-using CleanArch.Infrastructure.Context;
+﻿using CleanArch_CQRS_MediatR.Domain.Abstractions;
+using CleanArch_CQRS_MediatR.Infrastructure.Context;
 
-namespace CleanArch.Infrastructure.Repositories;
+namespace CleanArch_CQRS_MediatR.Infrastructure.Repositories;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
 {

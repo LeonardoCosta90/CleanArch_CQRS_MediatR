@@ -1,6 +1,6 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch_CQRS_MediatR.Domain.Entities;
 
-namespace CleanArch.Domain.Abstractions;
+namespace CleanArch_CQRS_MediatR.Domain.Abstractions;
 
 public interface IMemberRepository
 {

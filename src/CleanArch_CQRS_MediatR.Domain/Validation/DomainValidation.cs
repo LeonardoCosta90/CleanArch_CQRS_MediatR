@@ -1,4 +1,4 @@
-﻿namespace CleanArch.Domain.Validation;
+﻿namespace CleanArch_CQRS_MediatR.Domain.Validation;
 
 public class DomainValidation : Exception
 {
