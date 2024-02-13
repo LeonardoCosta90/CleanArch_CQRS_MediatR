@@ -1,7 +1,7 @@
-﻿using CleanArch.Domain.Validation;
+﻿using CleanArch_CQRS_MediatR.Domain.Validation;
 using System.Text.Json.Serialization;
 
-namespace CleanArch.Domain.Entities;
+namespace CleanArch_CQRS_MediatR.Domain.Entities;
 
 public sealed class Member : Entity
 {

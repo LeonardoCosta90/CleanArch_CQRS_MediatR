@@ -1,8 +1,8 @@
-﻿using CleanArch.Domain.Entities;
-using CleanArch.Infrastructure.EntityConfiguration;
+﻿using CleanArch_CQRS_MediatR.Domain.Entities;
+using CleanArch_CQRS_MediatR.Infrastructure.EntityConfiguration;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArch.Infrastructure.Context;
+namespace CleanArch_CQRS_MediatR.Infrastructure.Context;
 
 public class AppDbContext : DbContext
 {

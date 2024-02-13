@@ -1,8 +1,8 @@
-﻿using CleanArch.Domain.Entities;
+﻿using CleanArch_CQRS_MediatR.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CleanArch.Infrastructure.EntityConfiguration;
+namespace CleanArch_CQRS_MediatR.Infrastructure.EntityConfiguration;
 
 public class MemberConfiguration : IEntityTypeConfiguration<Member>
 {

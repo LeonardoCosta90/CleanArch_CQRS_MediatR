@@ -1,9 +1,9 @@
-﻿using CleanArch.Domain.Abstractions;
-using CleanArch.Domain.Entities;
-using CleanArch.Infrastructure.Context;
+﻿using CleanArch_CQRS_MediatR.Domain.Abstractions;
+using CleanArch_CQRS_MediatR.Domain.Entities;
+using CleanArch_CQRS_MediatR.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArch.Infrastructure.Repositories;
+namespace CleanArch_CQRS_MediatR.Infrastructure.Repositories;
 
 public class MemberRepository : IMemberRepository
 {

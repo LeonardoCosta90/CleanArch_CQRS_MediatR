@@ -1,4 +1,4 @@
-﻿namespace CleanArch.Domain.Abstractions;
+﻿namespace CleanArch_CQRS_MediatR.Domain.Abstractions;
 
 public interface IUnitOfWork
 {

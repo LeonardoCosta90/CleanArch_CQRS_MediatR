@@ -1,9 +1,9 @@
-﻿using CleanArch.Domain.Abstractions;
-using CleanArch.Domain.Entities;
+﻿using CleanArch_CQRS_MediatR.Domain.Abstractions;
+using CleanArch_CQRS_MediatR.Domain.Entities;
 using Dapper;
 using System.Data;
 
-namespace CleanArch.Infrastructure.Repositories;
+namespace CleanArch_CQRS_MediatR.Infrastructure.Repositories;
 
 public class MemberDapperRepository : IMemberDapperRepository
 {
