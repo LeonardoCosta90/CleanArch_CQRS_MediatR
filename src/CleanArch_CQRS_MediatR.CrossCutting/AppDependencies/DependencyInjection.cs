@@ -22,7 +22,15 @@ public static class DependencyInjection
                          options.UseMySql(mySqlConnection,
                          ServerVersion.AutoDetect(mySqlConnection)));
 
-        services.AddScoped<IMemberRepository,MemberRepository>();
+        // Registrar IDbConnection como uma instância única
+        services.AddSingleton<IDbConnection>(provider =>
+        {
+            var connection = new MySqlConnection(mySqlConnection);
+            connection.Open();
+            return connection;
+        });
+
+        services.AddScoped<IMemberRepository, MemberRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         var myhandlers = AppDomain.CurrentDomain.Load("CleanArch_CQRS_MediatR.Application");
