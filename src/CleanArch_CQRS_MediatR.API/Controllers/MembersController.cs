@@ -1,32 +1,61 @@
+using CleanArch_CQRS_MediatR.Application.Members.Commands;
+using CleanArch_CQRS_MediatR.Application.Members.Queries;
 using CleanArch_CQRS_MediatR.Domain.Abstractions;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CleanArch_CQRS_MediatR.API.Controllers
+namespace CleanArch_CQRS_MediatR.API.Controllers;
+
+[Route("[controller]")]
+[ApiController]
+public class MembersController : ControllerBase
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class MembersController : ControllerBase
+    private readonly IMediator _mediator;
+    public MembersController(IMediator mediator, IUnitOfWork unitOfWork)
     {
+        _mediator = mediator;
+    }
 
-        private readonly IUnitOfWork _unitOfWork;
-        public MembersController(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
+    [HttpGet]
+    public async Task<IActionResult> GetMembers()
+    {
+        var query = new GetMembersQuery();
+        var members = await _mediator.Send(query);
+        return Ok(members);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> GetMembers()
-        {
-            var members = await _unitOfWork.MemberRepository.GetMembers();
-            return members != null ? Ok(members) : NotFound("Member not found.");
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetMember(int id)
+    {
+        var query = new GetMemberByIdQuery { Id = id };
+        var member = await _mediator.Send(query);
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetMember(int id)
-        {
-            var member = await _unitOfWork.MemberRepository.GetMemberById(id);
-            return member != null ? Ok(member) : NotFound("Member not found.");
-        }
+        return member != null ? Ok(member) : NotFound("Member not found.");
+    }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateMember(CreateMemberCommand command)
+    {
+        var createdMember = await _mediator.Send(command);
+        return CreatedAtAction(nameof(GetMember), new { id = createdMember.Id }, createdMember);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateMember(int id, UpdateMemberCommand command)
+    {
+        command.Id = id;
+        var updatedMember = await _mediator.Send(command);
+
+        return updatedMember != null ? Ok(updatedMember) : NotFound("Member not found.");
+    }
+
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteMember(int id)
+    {
+        var command = new DeleteMemberCommand { Id = id };
+        var deletedMember = await _mediator.Send(command);
+
+        return deletedMember != null ? Ok(deletedMember) : NotFound("Member not found.");
     }
 }
